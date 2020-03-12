@@ -1,0 +1,3 @@
+# Develop and Deploy Serverless apps on OpenShift 4
+
+This repository contains how to develop multiple applications(Quarkus, Spring Boot, Python, NodeJs, Go) and deploy them as serverless services on Red Hat OpenShift 4.

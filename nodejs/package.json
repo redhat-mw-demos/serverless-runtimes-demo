@@ -1,0 +1,12 @@
+{
+  "name": "nodejs-serverless",
+  "version": "1.0.0",
+  "author": "Daniel Oh danieloh30@github.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
