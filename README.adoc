@@ -1,3 +1,191 @@
-# Develop and Deploy Serverless apps on OpenShift 4
+# Deploy Multiple Cloud-Native Apps to OpenShift Serverless
 
-This repository contains how to develop multiple applications(Quarkus, Spring Boot, Python, NodeJs, Go) and deploy them as serverless services on Red Hat OpenShift 4.
+This repository contains how to develop multiple applications(Quarkus, Spring Boot, Python, NodeJs, Go) and deploy them as serverless services on Red Hat OpenShift 4.3+
+
+=== 1. Install OpenShift Serverless Operator
+
+Follow the https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html/serverless_applications/installing-openshift-serverless[Installing OpenShift Serverless^] on OpenShift 4.3 or later. Then be sure if all pods are running in _knative_serving_ and _knative_serving_ingess_ namespaces.
+
+=== 2. Run Each Cloud-Native application locally
+
+==== 2-1. Go Application
+
+Build go application and run it locally:
+
+[source,sh,role="copypaste"]
+----
+cd go
+go build
+./serverless 
+----
+
+Access the endpoint via _curl_ command or web browser:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/go
+----
+
+You will see the result:
+
+[source,sh]
+----
+Welcome, Go with Serverless!
+----
+
+Stop the go runtimes via _CTL+C_.
+
+==== 2-2. NodeJs Application
+
+Build node.js application and run it locally:
+
+[source,sh,role="copypaste"]
+----
+cd ../nodejs
+npm install
+npm start
+----
+
+Access the endpoint via _curl_ command or web browser:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/nodejs
+----
+
+You will see the result:
+
+[source,sh]
+----
+Welcome, Nodejs with Serverless!
+----
+
+Stop the go runtimes via _CTL+C_.
+
+==== 2-3. Python Application
+
+Build python application and run it locally:
+
+[source,sh,role="copypaste"]
+----
+cd ../python
+python app.py
+----
+
+Access the endpoint via _curl_ command or web browser:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/python
+----
+
+You will see the result:
+
+[source,sh]
+----
+Welcome, Python with Serverless!
+----
+
+Stop the go runtimes via _CTL+C_.
+
+==== 2-4. Spring Boot Application
+
+Build spring boot application and run it locally:
+
+[source,sh,role="copypaste"]
+----
+cd ../springboot
+mvn package
+java -jar target/springboot-0.0.1-SNAPSHOT.jar
+----
+
+Access the endpoint via _curl_ command or web browser:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/spring
+----
+
+You will see the result:
+
+[source,sh]
+----
+Welcome, Spring Boot with Serverless!
+----
+
+Stop the go runtimes via _CTL+C_.
+
+==== 2-5. Quarkus Application
+
+Build quarkus application and run it locally:
+
+[source,sh,role="copypaste"]
+----
+cd ../quarkus
+mvn package -DskipTests
+java -jar target/quarkus-serverless-1.0-SNAPSHOT-runner.jar
+----
+
+Access the endpoint via _curl_ command or web browser:
+
+[source,sh,role="copypaste"]
+----
+curl http://localhost:8080/api/spring
+----
+
+You will see the result:
+
+[source,sh]
+----
+Welcome, Quarkus with Serverless!
+----
+
+Stop the go runtimes via _CTL+C_.
+
+=== 3. Deploy the App via Knative Service
+
+Log in OpenShift cluster 4.3+ then create a new project, *serverless-demo*. Select *Deploy Image* in Dev Console. 
+
+Copy the following container image that pre-pushed based Quakrus native executable binary:
+
+[source,sh,role="copypaste"]
+----
+danielon30/quarkus-serverless:latest
+----
+
+You wil see that Quarkus application is up in 60 secs. When you go to the logs in Pod, you will see 10~15 millisecs to start Quarkus.
+
+Repeat the following 4 images to deploy via Knative Service in Dev Console:
+
+* danielon30/springboot-serverless:latest
+* danielon30/go-serverless:latest
+* danielon30/python-serverless:latest
+* danielon30/nodejs-serverless:latest
+
+=== 4. Trigger Each Endpoint
+
+Open the following 5 bash scripts to replace _YOUR ROUTE DOMAIN URL_ in OpenShift cluster with _ROUTE_DOMAIN_ in the script files.
+
+* call-go.sh
+* call-nodejs.sh
+* call-python.sh
+* call-quarkus.sh
+* call-springboot.sh
+
+Run each script in separated 5 terminal then see which app will go up for the first time. Quarkus will be the *FIRST*.
+
+[NOTE]
+====
+Be sure to run the above scripts when all pods scaled to down to zero. It typically takes 30 seconds.
+====
+
+==== 5. (Optional) Deploy All Cloud-Native Applications to OpenShift via Magic Script
+
+Run the following command in your local computer. Be sure to log in the remote OpenShift cluster via _oc login_:
+
+[source,sh,role="copypaste"]
+----
+sh scripts/deploy-all.sh
+----
+
+Move on the topology view and ensure 5 serverless applications are running.

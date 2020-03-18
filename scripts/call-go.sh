@@ -1,7 +1,9 @@
+#!/bin/bash
+
 ROUTE_DOMAIN=apps.cluster-runtimes-8a37.runtimes-8a37.example.opentlc.com
 
 start_time=$SECONDS
-curl http://go-serverless.serverless-demo.{$ROUTE_DOMAIN}/api/go
+curl http://go-serverless.serverless-demo.${ROUTE_DOMAIN}/api/go
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))

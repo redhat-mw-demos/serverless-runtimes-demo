@@ -3,7 +3,7 @@
 ROUTE_DOMAIN=apps.cluster-runtimes-8a37.runtimes-8a37.example.opentlc.com
 
 start_time=$SECONDS
-curl http://quarkus-serverless.serverless-demo.{$ROUTE_DOMAIN}/api/quarkus
+curl http://quarkus-serverless.serverless-demo.${ROUTE_DOMAIN}/api/quarkus
 
 end_time=$SECONDS
 

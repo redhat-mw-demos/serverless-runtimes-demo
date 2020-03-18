@@ -3,7 +3,7 @@
 ROUTE_DOMAIN=apps.cluster-runtimes-8a37.runtimes-8a37.example.opentlc.com
 
 start_time=$SECONDS
-curl http://springboot-serverless.serverless-demo.{$ROUTE_DOMAIN}/api/spring
+curl http://springboot-serverless.serverless-demo.${ROUTE_DOMAIN}/api/spring
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))
