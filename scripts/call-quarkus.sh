@@ -1,9 +1,15 @@
 #!/bin/bash
 
-ROUTE_DOMAIN=apps.cluster-runtimes-8a37.runtimes-8a37.example.opentlc.com
+ROUTE_DOMAIN=$1
+
+if [ -z "$ROUTE_DOMAIN" ]
+then
+  echo "Need to specify the OpenShift Route domain as the first argument to this script"
+  exit -1
+fi
 
 start_time=$SECONDS
-curl http://quarkus-serverless.serverless-demo.${ROUTE_DOMAIN}/api/quarkus
+curl http://quarkus.serverless-demo.${ROUTE_DOMAIN}/api/quarkus
 
 end_time=$SECONDS
 

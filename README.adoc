@@ -95,7 +95,7 @@ Build spring boot application and run it locally:
 [source,sh,role="copypaste"]
 ----
 cd ../springboot
-mvn package
+mvn package -DskipTests
 java -jar target/springboot-0.0.1-SNAPSHOT.jar
 ----
 
@@ -130,7 +130,7 @@ Access the endpoint via _curl_ command or web browser:
 
 [source,sh,role="copypaste"]
 ----
-curl http://localhost:8080/api/spring
+curl http://localhost:8080/api/quarkus
 ----
 
 You will see the result:
@@ -164,15 +164,15 @@ Repeat the following 4 images to deploy via Knative Service in Dev Console:
 
 === 4. Trigger Each Endpoint
 
-Open the following 5 bash scripts to replace _YOUR ROUTE DOMAIN URL_ in OpenShift cluster with _ROUTE_DOMAIN_ in the script files.
+* call-go.sh _YOUR_ROUTE_DOMAIN_URL_
+* call-nodejs.sh _YOUR_ROUTE_DOMAIN_URL_
+* call-python.sh _YOUR_ROUTE_DOMAIN_URL_
+* call-quarkus.sh _YOUR_ROUTE_DOMAIN_URL_
+* call-springboot.sh _YOUR_ROUTE_DOMAIN_URL_
 
-* call-go.sh
-* call-nodejs.sh
-* call-python.sh
-* call-quarkus.sh
-* call-springboot.sh
+Run each script, replacing _YOUR_ROUTE_DOMAIN_URL_ with the wildcard route domain for your cluster (i.e. `apps.cluster-runtimes-8a37.runtimes-8a37.example.opentlc.com`), in separated terminals then see which app will go up for the first time. Quarkus will be the *FIRST*.
 
-Run each script in separated 5 terminal then see which app will go up for the first time. Quarkus will be the *FIRST*.
+You can also run `call-all.sh YOUR_ROUTE_DOMAIN_URL` which will run all the endpoints and print out the results in the order they come back.
 
 [NOTE]
 ====
