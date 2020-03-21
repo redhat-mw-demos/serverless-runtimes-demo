@@ -8,9 +8,7 @@ Follow the https://access.redhat.com/documentation/en-us/openshift_container_pla
 
 === 2. Run Each Cloud-Native application locally
 
-
-
-<1>Build go application and run it locally:
+==== 2-1. Build go application and run it locally:
 
 [source,sh,role="copypaste"]
 ----
