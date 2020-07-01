@@ -12,10 +12,10 @@ public class GreetingResourceTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/hello")
+          .when().get("/api/quarkus")
           .then()
              .statusCode(200)
-             .body(is("hello"));
+             .body(is("Welcome, Quarkus with Serverless!"));
     }
 
 }
