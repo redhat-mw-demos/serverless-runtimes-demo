@@ -9,8 +9,7 @@ then
 fi
 
 start_time=$SECONDS
-curl http://quarkus.serverless-demo.${ROUTE_DOMAIN}/api/quarkus
-
+curl http://quarkus-demo-serverless.${ROUTE_DOMAIN}/api/quarkus
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))

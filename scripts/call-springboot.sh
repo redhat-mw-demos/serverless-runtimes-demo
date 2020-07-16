@@ -9,7 +9,7 @@ then
 fi
 
 start_time=$SECONDS
-curl http://springboot.serverless-demo.${ROUTE_DOMAIN}/api/spring
+curl http://springboot-demo-serverless.${ROUTE_DOMAIN}/api/spring
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))

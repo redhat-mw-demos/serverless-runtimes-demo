@@ -9,7 +9,7 @@ then
 fi
 
 start_time=$SECONDS
-curl http://go.serverless-demo.${ROUTE_DOMAIN}/api/go
+curl http://go-demo-serverless.${ROUTE_DOMAIN}/api/go
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))

@@ -142,7 +142,7 @@ Stop the go runtimes via _CTL+C_.
 
 === 3. Deploy the App via Knative Service
 
-Log in OpenShift cluster 4.3+ then create a new project, *serverless-demo*. Select *Deploy Image* in Dev Console. 
+Log in OpenShift cluster 4.3+ then create a new project, *demo-serverless*. Select *Deploy Image* in Dev Console. 
 
 Copy the following container image that pre-pushed based Quakrus native executable binary:
 
