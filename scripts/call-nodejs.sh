@@ -9,7 +9,7 @@ then
 fi
 
 start_time=$SECONDS
-curl http://nodejs.serverless-demo.${ROUTE_DOMAIN}/api/nodejs
+curl http://nodejs-demo-serverless.${ROUTE_DOMAIN}/api/nodejs
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))

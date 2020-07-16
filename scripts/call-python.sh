@@ -9,7 +9,7 @@ then
 fi
 
 start_time=$SECONDS
-curl http://python.serverless-demo.${ROUTE_DOMAIN}/api/python
+curl http://python-demo-serverless.${ROUTE_DOMAIN}/api/python
 end_time=$SECONDS
 
 elapsed_time_sec=$(( end_time - start_time ))
